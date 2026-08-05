@@ -135,12 +135,4 @@ BTN_TOP_C4_X, BTN_TOP_C4_Y = 0.85, 0.07   # top-right button
 
 ---
 
-## Part of TONY
-
-VISION AI is the eyes of [TONY](https://github.com/aesatyilmaz/tony) — a local AI desktop assistant. VISION AI handles physical input (gestures), TONY handles reasoning (voice commands + LLM).
-
-They run independently — VISION AI works standalone without TONY.
-
----
-
 *Built with ❤️ by Esat*
