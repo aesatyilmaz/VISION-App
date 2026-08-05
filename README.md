@@ -1,4 +1,4 @@
-# VISION v2.04
+# VISION AI
 
 A hand gesture control system for Windows built with MediaPipe. Control your computer — scroll, adjust volume, switch windows, move the mouse, and trigger custom actions — all without touching your keyboard or mouse.
 
@@ -137,9 +137,9 @@ BTN_TOP_C4_X, BTN_TOP_C4_Y = 0.85, 0.07   # top-right button
 
 ## Part of TONY
 
-VISION is the eyes of [TONY](https://github.com/aesatyilmaz/tony) — a local AI desktop assistant. VISION handles physical input (gestures), TONY handles reasoning (voice commands + LLM).
+VISION AI is the eyes of [TONY](https://github.com/aesatyilmaz/tony) — a local AI desktop assistant. VISION AI handles physical input (gestures), TONY handles reasoning (voice commands + LLM).
 
-They run independently — VISION works standalone without TONY.
+They run independently — VISION AI works standalone without TONY.
 
 ---
 
