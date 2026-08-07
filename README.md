@@ -1,4 +1,4 @@
-# VISION AI
+# VISION App
 
 A hand gesture control system for Windows built with MediaPipe. Control your computer — scroll, adjust volume, switch windows, move the mouse, and trigger custom actions — all without touching your keyboard or mouse.
 
@@ -93,9 +93,8 @@ Press **Q** to quit.
 ## Project Structure
 
 ```
-vision/
-├── vision.py      ← Main module (gesture engine + overlay)
-└── __init__.py
+vision.py      ← Main module (gesture engine + overlay)
+__init__.py    ← start/stop/toggle helpers for embedding it in another app
 ```
 
 All logic lives in `vision.py` — gesture classification, zone detection, action execution, and the OpenCV overlay renderer are intentionally kept in one file for portability.

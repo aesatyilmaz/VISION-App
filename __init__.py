@@ -1,4 +1,4 @@
-from vision.vision import VisionController
+from vision import VisionController
 
 _vision_instance = None
 

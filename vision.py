@@ -1,6 +1,5 @@
 """
-VISION AI
-Tony\vision\vision.py
+VISION App — hand-gesture computer control for Windows (MediaPipe + OpenCV).
 
 - Tap buttons (INDEX_TIP based)
 - Scroll: dynamic speed (MIN=50, MAX=300, MULT=1200)
@@ -285,7 +284,7 @@ class VisionController:
         self._running = False
 
         print("==============================================")
-        print("  VISION AI")
+        print("  VISION App")
         print("  V = Ac/Kapat   |   Q = Cikis")
         print("==============================================")
 
@@ -304,7 +303,7 @@ class VisionController:
     def toggle(self):
         self.active = not self.active
         self._reset_all()
-        print("VISION AI:", "ACTIVE" if self.active else "STANDBY")
+        print("VISION App:", "ACTIVE" if self.active else "STANDBY")
 
     def _reset_all(self):
         self.palm_buf.clear()
@@ -476,7 +475,7 @@ class VisionController:
 
             if self.show_window:
                 self._draw_hud(frame, action_label, last_label, now)
-                cv2.imshow("VISION AI", frame)
+                cv2.imshow("VISION App", frame)
                 key = cv2.waitKey(1) & 0xFF
                 if key in (ord('v'), ord('V')): self.toggle()
                 elif key in (ord('q'), ord('Q')):
@@ -773,7 +772,7 @@ class VisionController:
         overlay = frame.copy()
 
         if not self.active:
-            cv2.putText(frame, "VISION AI: STANDBY", (8, h-8),
+            cv2.putText(frame, "VISION App: STANDBY", (8, h-8),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.50, (0,100,200), 1)
             return
 
@@ -927,7 +926,7 @@ class VisionController:
         draw_btn(BTN_BOT_C2_X,BTN_BOT_C2_Y,"PLAY",      Zone.BOT_C2)
         draw_btn(BTN_BOT_C3_X,BTN_BOT_C3_Y,"NEXT",      Zone.BOT_C3)
 
-        status_txt   = "ALT+TAB MODE" if self.alttab_mode else ("MOUSE MODE" if self.mouse_mode else "VISION AI: ACTIVE")
+        status_txt   = "ALT+TAB MODE" if self.alttab_mode else ("MOUSE MODE" if self.mouse_mode else "VISION App: ACTIVE")
         status_color = (0,100,255) if self.alttab_mode else ((0,200,255) if self.mouse_mode else (0,200,80))
         cv2.putText(frame,status_txt,(8,h-8),cv2.FONT_HERSHEY_SIMPLEX,0.48,status_color,1)
         if last_label:
