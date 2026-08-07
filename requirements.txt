@@ -1,0 +1,11 @@
+# VISION App — hand-gesture computer control. Windows, Python 3.10-3.12.
+#   pip install -r requirements.txt
+
+mediapipe>=0.10         # hand landmarks — 21 points per hand, CPU, model bundled
+opencv-python>=4.10     # camera capture and every pixel of the overlay
+numpy>=1.26             # the frame format both of the above speak
+pyautogui>=0.9.54       # cursor, clicks, scrolling
+keyboard>=0.13          # key combinations (Alt+Tab holds Alt across several events)
+
+# Nothing is downloaded at runtime: MediaPipe ships its hand model inside the wheel,
+# so the app works offline once this install finishes.

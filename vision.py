@@ -1,18 +1,20 @@
 """
 VISION App — hand-gesture computer control for Windows (MediaPipe + OpenCV).
 
-- Tap buttons (INDEX_TIP based)
-- Scroll: dynamic speed (MIN=50, MAX=300, MULT=1200)
-- Volume: dynamic speed (MIN=1, MAX=10, MULT=80)
-- Effects: Zone Glow
-- Gestures: Swipe L/R, Two-hand Down
-- Alt+Tab:
-    OK isareti 1sn     = ac (Alt basili)
-    tek el swipe sag   = sonraki pencere (Tab)
-    tek el swipe sol   = onceki pencere (Shift+Tab)
-    iki el 2sn duragan = kapat (Alt birak)
-- Two-hand down koruma: son aksiyondan 5sn sonra calisir
-- Lock countdown: 2sn
+Everything lives in this one file on purpose — gesture classification, zone detection,
+action execution and the OpenCV overlay — so the whole thing is one import away.
+
+- Tap buttons, triggered by the index fingertip
+- Scroll and volume: speed follows how fast your hand moves, not a fixed step
+- Zone glow: a button lights up as your hand approaches it
+- Gestures: swipe left/right, two hands down
+- Alt+Tab window switcher:
+    OK sign, held 1s        open it (Alt stays down)
+    one-hand swipe right    next window (Tab)
+    one-hand swipe left     previous window (Shift+Tab)
+    both hands still, 2s    close it (Alt released)
+- Two-hand-down is blocked for 5s after any other action, so it cannot fire by accident
+- Locking a fader shows a 2s countdown before it takes hold
 """
 
 import cv2
@@ -285,7 +287,7 @@ class VisionController:
 
         print("==============================================")
         print("  VISION App")
-        print("  V = Ac/Kapat   |   Q = Cikis")
+        print("  V = toggle   |   Q = quit")
         print("==============================================")
 
     def start(self):
