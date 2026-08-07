@@ -225,7 +225,8 @@ class VisionController:
         self.hands = self.mp_hands.Hands(
             static_image_mode=False, max_num_hands=2,
             min_detection_confidence=0.75, min_tracking_confidence=0.65)
-        self.mp_draw = mp.solutions.drawing_utils
+        # (No mp.solutions.drawing_utils here — this app draws its own overlay, and
+        # MediaPipe's landmark renderer was assigned and never used.)
 
         self.active       = False
         self.last_trigger = {}
@@ -938,6 +939,17 @@ class VisionController:
 
 
 if __name__ == "__main__":
+    import sys
+
+    if "--selftest" in sys.argv:
+        # Builds the MediaPipe graph and exits — no camera, no window, no key events.
+        # This is the exact step a packaged build gets wrong: the .tflite models are
+        # data, not Python, so a bundler that only follows imports leaves them out and
+        # the app dies the moment a hand appears. Run this against the built exe.
+        VisionController(show_window=False)
+        print("selftest OK — hand model loaded")
+        raise SystemExit(0)
+
     vision = VisionController(camera_index=0, show_window=True)
     vision.active = True
     vision.start()

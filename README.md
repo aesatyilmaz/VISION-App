@@ -82,6 +82,34 @@ screen now, not at the overlay, and a bright interface in the way is only noise.
 | **Webcam** | Any. It is the only sensor. |
 | **GPU** | Not needed. MediaPipe's hand model runs on the CPU in real time. |
 
+### The packaged app — no Python needed
+
+VISION App builds into an ordinary Windows application you double-click. From a clone
+with [PyInstaller](https://pyinstaller.org) installed:
+
+```powershell
+pip install pyinstaller
+python tools/build.py
+```
+
+That writes **`dist/VISION App/`** — about 300 MB, containing `VISION App.exe` and
+everything it needs, including MediaPipe's hand model. Zip that folder, unzip it on any
+Windows machine, and run the .exe. No Python, no pip, no dependencies, nothing
+downloaded at first run.
+
+Check a build without opening the camera:
+
+```powershell
+"dist/VISION App/VISION App.exe" --selftest
+```
+
+That loads the hand model and exits. It is a two-second check for the failure this kind
+of app is most prone to: the `.tflite` models are data, not Python, so a bundler that
+only follows imports leaves them out — and the app then starts, opens the camera, and
+dies the moment a hand appears.
+
+> To run it from source instead, carry on below.
+
 ### 1. Get the code
 
 ```powershell
@@ -233,6 +261,7 @@ After changing any of these, `python tools/render.py` redraws the overlay to
 vision.py       the whole controller — gestures, zones, actions, overlay
 __init__.py     start / stop / toggle helpers for embedding it elsewhere
 tools/render.py paints every overlay state to PNGs, with no camera
+tools/build.py  packages it into a double-clickable Windows app
 docs/images/    those PNGs
 ```
 

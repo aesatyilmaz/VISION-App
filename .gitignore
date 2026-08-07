@@ -9,3 +9,8 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# PyInstaller output (see tools/build.py) — hundreds of MB, rebuilt on demand
+build/
+dist/
+*.spec
